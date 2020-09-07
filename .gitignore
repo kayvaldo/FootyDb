@@ -341,3 +341,5 @@ healthchecksdb
 
 # Console project
 FootyDb.Lab
+assets
+/FootyDb.Blazor/wwwroot/css
