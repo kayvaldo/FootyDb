@@ -4,14 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FootyDb.Domain
 {
-    public class Country
+    public class Stadium
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public string ImageUrl { get; set; }
-        public ICollection<League> Leagues { get; set; } = new List<League>();
+        public string Address { get; set; }
+        public int? Capacity { get; set; }
+        public string City { get; set; }
         public ICollection<Club> Clubs { get; set; } = new List<Club>();
+        public string Name { get; set; }
+        public string Surface { get; set; }
     }
 }
