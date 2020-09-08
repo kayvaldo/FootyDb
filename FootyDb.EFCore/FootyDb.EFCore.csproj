@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FootyDb.Domain\FootyDb.Domain.csproj" />
+    <ProjectReference Include="..\FootyDb.Services\FootyDb.Services.csproj" />
   </ItemGroup>
 
 </Project>
