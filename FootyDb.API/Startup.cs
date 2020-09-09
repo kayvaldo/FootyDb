@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace FootyDb.API
 {
@@ -33,7 +34,9 @@ namespace FootyDb.API
             services.AddCors(
                 setupAction => setupAction.AddDefaultPolicy(configurePolicy => configurePolicy.AllowAnyOrigin()));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(
+                    setupAction => setupAction.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<FootyDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICountryRepository, CountryRepository>();

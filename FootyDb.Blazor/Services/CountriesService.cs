@@ -27,12 +27,14 @@ namespace FootyDb.Blazor.Services
 
             if (responseMessage.StatusCode == OK)
             {
-                return await JsonSerializer.DeserializeAsync<IEnumerable<Country>>(
+                var result = await JsonSerializer.DeserializeAsync<IEnumerable<Country>>(
                     await responseMessage.Content.ReadAsStreamAsync(),
                     new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
+
+                return result;
             }
 
             throw new WebException($"Error occurred: {responseMessage.ReasonPhrase}");

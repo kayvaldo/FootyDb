@@ -25,13 +25,13 @@ namespace FootyDb.API.Controllers
         [HttpGet]
         public IEnumerable<Country> GetCountries()
         {
-            return _countryRepo.GetCountriesWithLeagues();
+            return _countryRepo.GetCountries();
         }
 
         [HttpGet("All")]
         public IEnumerable<Country> Get()
         {
-            return _countryRepo.GetCountries();
+            return _countryRepo.GetAllCountries();
         }
 
         // GET api/<CountriesController>/5

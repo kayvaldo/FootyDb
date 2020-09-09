@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FootyDb.EFCore\FootyDb.EFCore.csproj" />
     <ProjectReference Include="..\FootyDb.Services\FootyDb.Services.csproj" />
   </ItemGroup>

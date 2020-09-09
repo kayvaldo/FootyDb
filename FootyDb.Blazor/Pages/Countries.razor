@@ -1,6 +1,5 @@
-﻿@page "/countries"
+﻿@page "/"
 @inherits CountriesBase
-
 <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -145,8 +144,8 @@
                                         <img class="img-responsive" src="@country.ImageUrl" alt="@country.Name">
                                         <div class="mix-details">
                                             <h4>@country.Name</h4>
-                                            <a class="mix-link" title="Leagues"><i class="fa fa-link"></i></a>
-                                            <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Teams" data-rel="fancybox-button"><i class="fa fa-group"></i></a>
+                                            <a class="mix-link" title="@country.Leagues.Count"><i class="fa fa-link"></i></a>
+                                            <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="@country.Clubs.Count" data-rel="fancybox-button"><i class="fa fa-group"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -162,150 +161,34 @@
                             <li class="filter active" data-filter="all">
                                 All
                             </li>
-                            <li class="filter" data-filter="category_1">
-                                UI Design
-                            </li>
-                            <li class="filter" data-filter="category_2">
-                                Web Development
-                            </li>
-                            <li class="filter" data-filter="category_3">
-                                Photography
-                            </li>
-                            <li class="filter" data-filter="category_3 category_1">
-                                Wordpress and Logo
-                            </li>
+
+                            @foreach (var country in Leagues.Select(x => x.Country).Distinct())
+                            {
+                                if (country != null)
+                                {
+                                    <li class="filter" data-filter="@country.Name">
+                                        @country.Name
+                                    </li>
+                                }
+                            }
                         </ul>
                         <div class="row mix-grid thumbnails">
-                            <div class="col-md-4 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            @foreach (var league in Leagues)
+                            {
+                                <div class="col-md-3 col-sm-4 mix @league.Country.Name mix_all" style="display: block;  opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img class="img-responsive" src="@league.ImageUrl" alt="@league.Name">
+                                        <div class="mix-details">
+                                            <h3>@league.Name</h3>
+                                            <p>
+                                                @league.Country.Name
+                                            </p>
+                                            <a class="mix-link" title="Table"><i class="fa fa-link"></i></a>
+                                            <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Teams" data-rel="fancybox-button"><i class="fa fa-group"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_2 category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img5.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img5.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_2 category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h3>Cascusamus et iusto odio</h3>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <!-- END FILTER -->
@@ -317,150 +200,33 @@
                             <li class="filter active" data-filter="all">
                                 All
                             </li>
-                            <li class="filter" data-filter="category_1">
-                                UI Design
-                            </li>
-                            <li class="filter" data-filter="category_2">
-                                Web Development
-                            </li>
-                            <li class="filter" data-filter="category_3">
-                                Photography
-                            </li>
-                            <li class="filter" data-filter="category_3 category_1">
-                                Wordpress and Logo
-                            </li>
+                            @foreach (var country in Clubs.Select(x => x.Country).Distinct())
+                            {
+                                if (country != null)
+                                {
+                                    <li class="filter" data-filter="@country.Name">
+                                        @country.Name
+                                    </li>
+                                }
+                            }
                         </ul>
                         <div class="row mix-grid thumbnails">
-                            <div class="col-md-6 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                            @foreach (var club in Clubs)
+                            {
+                                <div class="col-md-3 col-sm-4 mix @club.Country.Name mix_all" style="display: block;  opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img class="img-responsive" src="@club.ImageUrl" alt="@club.Name">
+                                        <div class="mix-details">
+                                            <h4>@club.Name</h4>
+                                            <p>
+                                                @club.Country.Name
+                                            </p>
+                                            <a class="mix-link"><i class="fa fa-link"></i></a>
+                                            <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Players" data-rel="fancybox-button"><i class="fa fa-group"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_2 category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img5.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img5.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img5.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_2 category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum deleniti.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_1 category_2 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img2.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img2.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_3 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img4.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img4.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mix category_1 mix_all" style="display: block;  opacity: 1;">
-                                <div class="mix-inner">
-                                    <img class="img-responsive" src="assets/img/works/img1.jpg" alt="">
-                                    <div class="mix-details">
-                                        <h4>Cascusamus et iusto odio</h4>
-                                        <p>
-                                            At vero eos et accusamus et iusto odio digniss imos duc sasdimus qui sint blanditiis prae sentium voluptatum.
-                                        </p>
-                                        <a class="mix-link"><i class="fa fa-link"></i></a>
-                                        <a class="mix-preview fancybox-button" href="assets/img/works/img1.jpg" title="Project Name" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <!-- END FILTER -->
