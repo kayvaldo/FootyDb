@@ -9,7 +9,7 @@ namespace FootyDb.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public int ApiLeagueId { get; set; }
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
         public Guid CountryId { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }

@@ -8,7 +8,7 @@ namespace FootyDb.Domain
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public League League { get; set; }
+        public virtual League League { get; set; }
         public Guid LeagueId { get; set; }
         public string Name { get; set; }
         public DateTime SeasonEnd { get; set; }

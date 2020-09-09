@@ -16,7 +16,7 @@ namespace FootyDb.Domain
         public DateTime BirthDate { get; set; }
         public string BirthPlace { get; set; }
         public string BirthCountry { get; set; }
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
         public Guid? CountryId { get; set; }
         public string Height { get; set; }
         public string Weight { get; set; }
